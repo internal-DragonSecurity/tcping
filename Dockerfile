@@ -1,4 +1,4 @@
-FROM golang:1.25-alpine@sha256:06cdd34bd531b810650e47762c01e025eb9b1c7eadd191553b91c9f2d549fae8 AS build
+FROM golang:1.25-alpine@sha256:ac09a5f469f307e5da71e766b0bd59c9c49ea460a528cc3e6686513d64a6f1fb AS build
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
@@ -6,7 +6,7 @@ COPY *.go .
 COPY *ping .
 RUN go build .
 
-FROM alpine:edge@sha256:115729ec5cb049ba6359c3ab005ac742012d92bbaa5b8bc1a878f1e8f62c0cb8
+FROM alpine:edge@sha256:ea71a031ed91cd46b00d438876550bc765da43b4ae40f331a12daf62f0937758
 RUN mkdir -p /usr/app/src
 WORKDIR /usr/src/app
 COPY --from=build /app/tcping .

@@ -6,7 +6,7 @@ COPY *.go .
 COPY *ping .
 RUN go build .
 
-FROM alpine:edge@sha256:115729ec5cb049ba6359c3ab005ac742012d92bbaa5b8bc1a878f1e8f62c0cb8
+FROM alpine:edge@sha256:020dfcbaaf4cc1078bf2d9c7ba31a8466e334061dcd2f248001d68f79e52c000
 RUN mkdir -p /usr/app/src
 WORKDIR /usr/src/app
 COPY --from=build /app/tcping .
